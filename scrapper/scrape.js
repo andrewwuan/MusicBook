@@ -8,18 +8,22 @@ for (i = 235; i < 262; i++) {
 
 var currentLinkIdIdx = 0;
 var currentLinkId = categoryLinkIds[currentLinkIdIdx];
+
 // First category's dropdown menu's id is "menu11"
 var currentMenuIdInt = currentLinkIdIdx + 10;
 var currentMenuId = "menu" + currentMenuIdInt;
 var loadInProgress = false;
+var processInProgress = false;
 
 var globalLinks = [];
 var globalLinkIdx = 0;
 var allLinksGrabbed = false;
+var shouldExit = false;
 
-var page = require('webpage').create();
+var webpage = require('webpage');
 var fs = require('fs');
 var folderPath = 'dict/';
+var page = webpage.create();
 
 steps = [
   function() {
@@ -63,13 +67,16 @@ steps = [
       currentMenuIdInt++;
       currentMenuId = "menu" + currentMenuIdInt;
     }
+    
+    processInProgress = false;
   },
   function() {
-    page.open(globalLinks[globalLinkIdx], function(status) {
+    var link = globalLinks[globalLinkIdx];
+    page.open(link, function(status) {
       if (status !== 'success') {
-        console.log('Unable to load link ' + globalLinks[globalLinkIdx] + '! Status: ' + status);
+        console.log('Unable to load link ' + link + '! Status: ' + status);
       } else {
-        console.log('Opened link ' + globalLinks[globalLinkIdx]);
+        console.log('Opened link ' + link);
       }
 
       var dict = page.evaluate(
@@ -83,9 +90,14 @@ steps = [
             if (contentTables.length <= 1) {
               contentTables = tablesUnderP;
             }
-            var contentTable = contentTables[contentTables.length-1];
+            var contentTable;
+            for (i = 0; i < contentTables.length; i++) {
+              if (contentTables[i].getAttribute("width") == "100%") {
+                contentTable = contentTables[i];
+              }
+            }
             var contentTableInner = contentTable.querySelector("table");
-            var rows = contentTableInner.querySelectorAll("table > tbody > tr");
+            var rows = contentTableInner.children[0].children;
             var numRows = rows.length;
             console.log("Processing " + numRows + " rows...")
             var dict = {};
@@ -110,26 +122,16 @@ steps = [
             return dict;
           }
         },
-        globalLinks[globalLinkIdx]);
+        link);
 
-      // for (var key in dict) {
-      //   if (key == 'A') {
-      //     var entries = dict[key];
-      //     for (var entry in entries) {
-      //       console.log("###");
-      //       console.log(entries[entry]);
-      //       console.log("###");
-      //     }
-      //   }
-      //   fs.write(folderPath + encodeURIComponent(key), dict[key], 'w');
-      // }
       fs.write(folderPath + globalLinkIdx + ".json", JSON.stringify(dict), 'w');
       
+      processInProgress = false;
     });
       
     globalLinkIdx++;
     if (globalLinkIdx == globalLinks.length) {
-      phantom.exit();
+      shouldExit = true;
     }
   }
 ]
@@ -150,6 +152,7 @@ page.onPageCreated = function(newPage) {
   };
   page.onLoadStarted = function() {
     loadInProgress = true;
+    processInProgress = true;
     console.log("Load started on page");
   };
   page.onLoadFinished = function() {
@@ -175,11 +178,13 @@ page.onConsoleMessage = function(msg) {
 
 var interval = setInterval(function() {
   
-  if (!loadInProgress) {
+  if (!loadInProgress && !processInProgress) {
     if (!allLinksGrabbed) {
       steps[0]();
-    } else {
+    } else if (!shouldExit) {
       steps[1]();
+    } else {
+      phantom.exit();
     }
   }
 }, 200)
