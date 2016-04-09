@@ -70,6 +70,7 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Word")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "spelling", ascending: true)]
 
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)

@@ -16,8 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        preloadData()
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let isPreloaded = defaults.boolForKey("isPreloaded")
+        if !isPreloaded {
+            preloadData()
+            defaults.setBool(true, forKey: "isPreloaded")
+        }
+
         return true
     }
 
@@ -108,37 +114,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Core Data loading
     func preloadData () {
         // Retrieve data from the source files
-        let resourcePath = NSBundle.mainBundle().resourcePath
-        let allFilesOpt = try? NSFileManager.defaultManager().contentsOfDirectoryAtPath(resourcePath!)
+        let resourcePath = NSBundle.mainBundle().resourcePath!
+        let allFilesOpt = try? NSFileManager.defaultManager().contentsOfDirectoryAtPath(resourcePath)
 
+        print("Going to process all files")
         if let allFiles = allFilesOpt {
             let dataFiles = allFiles.filter { (filename: String) -> Bool in
                 filename.hasSuffix(".json")
             }
 
             // Remove existing data in data model
+            print("Removing data")
             removeData()
 
-            // Parse data files
-            let words = parseJSON(dataFiles)
-
-            // Insert words into data model
+            // Parse data files and insert into data model
             let managedContext = self.managedObjectContext
             let entity = NSEntityDescription.entityForName("Word", inManagedObjectContext: managedContext)
-
-            words.forEach({ (word: Word) in
-                let wordObj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-                wordObj.setValue(word.spelling, forKey: "spelling")
-                wordObj.setValue(word.explanation, forKey: "explanation")
-            })
-
+            for dataFile in dataFiles {
+                do {
+                    print("Parsing data file \(dataFile)")
+                    let words = try parseDataFile(dataFile)
+                    print("Data file \(dataFile) has \(words.count) items")
+                    
+                    words.forEach({ (word: Word) in
+                        let wordObj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+                        wordObj.setValue(word.spelling, forKey: "spelling")
+                        wordObj.setValue(word.explanation, forKey: "explanation")
+                    })
+                } catch let error as NSError {
+                    print("Could not parse \(dataFile), \(error.userInfo)")
+                }
+            }
+            
             do {
                 try managedContext.save()
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
             }
+
         } else {
-            print("Can't get files under " + resourcePath!)
+            print("Can't get files under " + resourcePath)
         }
     }
 
@@ -155,13 +170,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func parseJSON(allFiles: [String]) -> [Word] {
-        return [
-            Word(spelling: "Andante", explanation: "In a moderately slow tempo, usually considered to be slower than allegretto but faster than adagio"),
-            Word(spelling: "Allegretto", explanation: "Faster than andante but not so fast as allegro"),
-            Word(spelling: "Allegro", explanation: "In a quick, lively tempo, usually considered to be faster than allegretto but slower than presto."),
-            Word(spelling: "Presto", explanation: "Executed at a rapid tempo")
-        ]
+    func parseDataFile(filename: String) throws -> [Word] {
+        print("In parseDataFile(\(filename))")
+        if let path = NSBundle.mainBundle().resourcePath?.stringByAppendingString("/\(filename)") {
+            if let jsonData = NSData(contentsOfFile: path) {
+                if let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
+                    return jsonResult.flatMap { (spellingObj, explanationObjs) -> [Word] in
+                        let spelling = spellingObj as! String
+                        let explanations = explanationObjs as! NSArray
+                        return explanations.map { explanation -> Word in
+                            return Word(spelling: spelling, explanation: explanation as! String)
+                        }
+                    }
+                }
+            }
+        }
+        
+        print("Failed to parse \(filename)!!!")
+        return []
     }
 
 
