@@ -13,14 +13,6 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: Properties
     @IBOutlet weak var wordSearchBar: UISearchBar!
     
-    let loadWordFromCoreData = true
-    
-    var sampleWords = [
-        Word(spelling: "Andante", explanation: "In a moderately slow tempo, usually considered to be slower than allegretto but faster than adagio"),
-        Word(spelling: "Allegretto", explanation: "Faster than andante but not so fast as allegro"),
-        Word(spelling: "Allegro", explanation: "In a quick, lively tempo, usually considered to be faster than allegretto but slower than presto."),
-        Word(spelling: "Presto", explanation: "Executed at a rapid tempo")
-    ]
     var allWords: [NSManagedObject]!
     var filteredWords: [NSManagedObject]!
     
@@ -74,47 +66,17 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func loadWords() {
-        
+
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        if loadWordFromCoreData {
-            let fetchRequest = NSFetchRequest(entityName: "Word")
-            
-            do {
-                let results = try managedContext.executeFetchRequest(fetchRequest)
-                allWords = results as! [NSManagedObject]
-            } catch let error as NSError {
-                print("Could not fetch \(error), \(error.userInfo)")
-            }
-        } else {
-            
-            // Delete all instances of the entity
-            let fetchRequest = NSFetchRequest(entityName: "Word")
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-            
-            do {
-                try managedContext.executeRequest(deleteRequest)
-            } catch let error as NSError {
-                print("Could not delete all \(error), \(error.userInfo)")
-            }
+        let fetchRequest = NSFetchRequest(entityName: "Word")
 
-            // Insert new instances
-            let entity = NSEntityDescription.entityForName("Word", inManagedObjectContext: managedContext)
-
-            let wordObjs = sampleWords.map({ (word: Word) -> NSManagedObject in
-                let wordObj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-                wordObj.setValue(word.spelling, forKey: "spelling")
-                wordObj.setValue(word.explanation, forKey: "explanation")
-                return wordObj
-            })
-
-            do {
-                try managedContext.save()
-                allWords = wordObjs
-            } catch let error as NSError  {
-                print("Could not save \(error), \(error.userInfo)")
-            }
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            allWords = results as! [NSManagedObject]
+            filteredWords = allWords
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
         }
-        filteredWords = allWords
     }
 }

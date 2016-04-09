@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        preloadData()
         return true
     }
 
@@ -80,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return coordinator
     }()
-    
+
     lazy var managedObjectContext: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = self.persistentStoreCoordinator
@@ -90,7 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
     // MARK: - Core Data Saving support
-    
     func saveContext () {
         if managedObjectContext.hasChanges {
             do {
@@ -103,6 +103,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+
+    // MARK: Core Data loading
+    func preloadData () {
+        // Retrieve data from the source files
+        let resourcePath = NSBundle.mainBundle().resourcePath
+        let allFilesOpt = try? NSFileManager.defaultManager().contentsOfDirectoryAtPath(resourcePath!)
+
+        if let allFiles = allFilesOpt {
+            let dataFiles = allFiles.filter { (filename: String) -> Bool in
+                filename.hasSuffix(".json")
+            }
+
+            // Remove existing data in data model
+            removeData()
+
+            // Parse data files
+            let words = parseJSON(dataFiles)
+
+            // Insert words into data model
+            let managedContext = self.managedObjectContext
+            let entity = NSEntityDescription.entityForName("Word", inManagedObjectContext: managedContext)
+
+            words.forEach({ (word: Word) in
+                let wordObj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+                wordObj.setValue(word.spelling, forKey: "spelling")
+                wordObj.setValue(word.explanation, forKey: "explanation")
+            })
+
+            do {
+                try managedContext.save()
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+            }
+        } else {
+            print("Can't get files under " + resourcePath!)
+        }
+    }
+
+    func removeData() {
+        let managedContext = self.managedObjectContext
+
+        let fetchRequest = NSFetchRequest(entityName: "Word")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try managedContext.executeRequest(deleteRequest)
+        } catch let error as NSError {
+            print("Could not delete all \(error), \(error.userInfo)")
+        }
+    }
+
+    func parseJSON(allFiles: [String]) -> [Word] {
+        return [
+            Word(spelling: "Andante", explanation: "In a moderately slow tempo, usually considered to be slower than allegretto but faster than adagio"),
+            Word(spelling: "Allegretto", explanation: "Faster than andante but not so fast as allegro"),
+            Word(spelling: "Allegro", explanation: "In a quick, lively tempo, usually considered to be faster than allegretto but slower than presto."),
+            Word(spelling: "Presto", explanation: "Executed at a rapid tempo")
+        ]
     }
 
 
