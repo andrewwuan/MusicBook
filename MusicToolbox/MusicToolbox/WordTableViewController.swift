@@ -13,7 +13,6 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
     // MARK: Properties
     @IBOutlet weak var wordSearchBar: UISearchBar!
     
-    var allWords: [NSManagedObject]!
     var filteredWords: [NSManagedObject]!
     var globalSearchText: String!
     
@@ -23,6 +22,7 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
         tableView.dataSource = self
         wordSearchBar.delegate = self
         
+        globalSearchText = ""
         loadWords()
     }
     
@@ -33,20 +33,9 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
     
     // MARK: Search bar delegate
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(search), object: nil)
+        NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(loadWords), object: nil)
         globalSearchText = searchText
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(search), userInfo: nil, repeats: false)
-    }
-
-    func search() {
-        if globalSearchText.isEmpty {
-            filteredWords = allWords
-        } else {
-            filteredWords = allWords.filter({ (word: NSManagedObject) -> Bool in
-                (word.valueForKey("spelling") as? String)!.rangeOfString(globalSearchText, options: .CaseInsensitiveSearch) != nil
-            })
-        }
-        tableView.reloadData()
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(loadWords), userInfo: nil, repeats: false)
     }
     
     // MARK: Table view data source
@@ -77,12 +66,14 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Word")
+        if (!globalSearchText.isEmpty) {
+            fetchRequest.predicate = NSPredicate(format: "spelling CONTAINS %@", globalSearchText)
+        }
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "spelling", ascending: true)]
 
         do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
-            allWords = results as! [NSManagedObject]
-            filteredWords = allWords
+            filteredWords = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+            tableView.reloadData()
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
