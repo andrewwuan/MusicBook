@@ -111,7 +111,7 @@ steps = [
                   if (dict[key] == undefined) {
                     dict[key] = [];
                   }
-                  dict[key].push(value);
+                  dict[key] = (value);
                 }
                 key = tds[0].textContent;
                 value = [tds[1].innerHTML];
