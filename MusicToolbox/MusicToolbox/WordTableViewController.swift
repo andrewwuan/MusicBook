@@ -15,6 +15,7 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
     
     var allWords: [NSManagedObject]!
     var filteredWords: [NSManagedObject]!
+    var globalSearchText: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +33,17 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
     
     // MARK: Search bar delegate
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
+        NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(search), object: nil)
+        globalSearchText = searchText
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(search), userInfo: nil, repeats: false)
+    }
+
+    func search() {
+        if globalSearchText.isEmpty {
             filteredWords = allWords
         } else {
             filteredWords = allWords.filter({ (word: NSManagedObject) -> Bool in
-                (word.valueForKey("spelling") as? String)!.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+                (word.valueForKey("spelling") as? String)!.rangeOfString(globalSearchText, options: .CaseInsensitiveSearch) != nil
             })
         }
         tableView.reloadData()
