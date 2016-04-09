@@ -10,7 +10,7 @@
 		92B29DEB1CB8B69600A8BD5C /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B29DEA1CB8B69600A8BD5C /* Word.swift */; };
 		92B29DED1CB8BCA500A8BD5C /* WordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B29DEC1CB8BCA500A8BD5C /* WordTableViewController.swift */; };
 		92B29DEF1CB8BDF700A8BD5C /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B29DEE1CB8BDF700A8BD5C /* WordTableViewCell.swift */; };
-		92B29EF51CB8D5B400A8BD5C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92B29EF31CB8D5B400A8BD5C /* Model.xcdatamodeld */; };
+		92B29EF51CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92B29EF31CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld */; };
 		92DA3BF21CB7857500AACC3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DA3BF11CB7857500AACC3B /* AppDelegate.swift */; };
 		92DA3BF71CB7857500AACC3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92DA3BF51CB7857500AACC3B /* Main.storyboard */; };
 		92DA3BF91CB7857500AACC3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92DA3BF81CB7857500AACC3B /* Assets.xcassets */; };
@@ -40,7 +40,7 @@
 		92B29DEA1CB8B69600A8BD5C /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		92B29DEC1CB8BCA500A8BD5C /* WordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTableViewController.swift; sourceTree = "<group>"; };
 		92B29DEE1CB8BDF700A8BD5C /* WordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
-		92B29EF41CB8D5B400A8BD5C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		92B29EF41CB8D5B400A8BD5C /* MusicToolbox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MusicToolbox.xcdatamodel; sourceTree = "<group>"; };
 		92DA3BEE1CB7857500AACC3B /* MusicToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DA3BF11CB7857500AACC3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92DA3BF61CB7857500AACC3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 				92DA3BF81CB7857500AACC3B /* Assets.xcassets */,
 				92DA3BFA1CB7857500AACC3B /* LaunchScreen.storyboard */,
 				92DA3BFD1CB7857500AACC3B /* Info.plist */,
-				92B29EF31CB8D5B400A8BD5C /* Model.xcdatamodeld */,
+				92B29EF31CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld */,
 			);
 			path = MusicToolbox;
 			sourceTree = "<group>";
@@ -280,7 +280,7 @@
 				92B29DEB1CB8B69600A8BD5C /* Word.swift in Sources */,
 				92B29DED1CB8BCA500A8BD5C /* WordTableViewController.swift in Sources */,
 				92B29DEF1CB8BDF700A8BD5C /* WordTableViewCell.swift in Sources */,
-				92B29EF51CB8D5B400A8BD5C /* Model.xcdatamodeld in Sources */,
+				92B29EF51CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,13 +530,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		92B29EF31CB8D5B400A8BD5C /* Model.xcdatamodeld */ = {
+		92B29EF31CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				92B29EF41CB8D5B400A8BD5C /* Model.xcdatamodel */,
+				92B29EF41CB8D5B400A8BD5C /* MusicToolbox.xcdatamodel */,
 			);
-			currentVersion = 92B29EF41CB8D5B400A8BD5C /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = 92B29EF41CB8D5B400A8BD5C /* MusicToolbox.xcdatamodel */;
+			path = MusicToolbox.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
