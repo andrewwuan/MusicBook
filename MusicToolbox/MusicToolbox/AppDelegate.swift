@@ -177,9 +177,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
                     return jsonResult.flatMap { (spellingObj, explanationObjs) -> [Word] in
                         let spelling = spellingObj as! String
+                        let finalSpelling = spelling.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+
                         let explanations = explanationObjs as! NSArray
                         return explanations.map { explanation -> Word in
-                            return Word(spelling: spelling, explanation: explanation as! String)
+                            return Word(spelling: finalSpelling, explanation: explanation as! String)
                         }
                     }
                 }
