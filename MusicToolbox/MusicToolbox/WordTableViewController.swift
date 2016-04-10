@@ -50,15 +50,18 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "WordTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! WordTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
 
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         // Fetches the appropriate meal for the data source layout.
         let word = filteredWords[indexPath.row]
-
-        cell.spellingLabel.text = word.valueForKey("spelling") as? String
-        cell.explanationLabel.text = word.valueForKey("explanation") as? String
         
-        return cell
+        let wordCell = cell as! WordTableViewCell
+        wordCell.spellingLabel.text = word.valueForKey("spelling") as? String
+        wordCell.explanationLabel.text = word.valueForKey("explanation") as? String
     }
     
     func loadWords() {
