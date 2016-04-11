@@ -137,6 +137,7 @@
 		927D7BA81CBB35B700955219 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927D7BA41CBB35B700955219 /* Word.swift */; };
 		927D7BA91CBB35B700955219 /* WordExplanation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927D7BA51CBB35B700955219 /* WordExplanation+CoreDataProperties.swift */; };
 		927D7BAA1CBB35B700955219 /* WordExplanation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927D7BA61CBB35B700955219 /* WordExplanation.swift */; };
+		927D7BAC1CBB408000955219 /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927D7BAB1CBB408000955219 /* WordDetailViewController.swift */; };
 		92B29DED1CB8BCA500A8BD5C /* WordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B29DEC1CB8BCA500A8BD5C /* WordTableViewController.swift */; };
 		92B29DEF1CB8BDF700A8BD5C /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B29DEE1CB8BDF700A8BD5C /* WordTableViewCell.swift */; };
 		92B29EF51CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92B29EF31CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld */; };
@@ -296,6 +297,7 @@
 		927D7BA41CBB35B700955219 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		927D7BA51CBB35B700955219 /* WordExplanation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordExplanation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		927D7BA61CBB35B700955219 /* WordExplanation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordExplanation.swift; sourceTree = "<group>"; };
+		927D7BAB1CBB408000955219 /* WordDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
 		92B29DEC1CB8BCA500A8BD5C /* WordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTableViewController.swift; sourceTree = "<group>"; };
 		92B29DEE1CB8BDF700A8BD5C /* WordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
 		92B29EF41CB8D5B400A8BD5C /* MusicToolbox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MusicToolbox.xcdatamodel; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 				923CCB291CB8FBA2005ADB29 /* data */,
 				92DA3BF11CB7857500AACC3B /* AppDelegate.swift */,
 				92B29DEC1CB8BCA500A8BD5C /* WordTableViewController.swift */,
+				927D7BAB1CBB408000955219 /* WordDetailViewController.swift */,
 				92B29DEE1CB8BDF700A8BD5C /* WordTableViewCell.swift */,
 				92DA3BF51CB7857500AACC3B /* Main.storyboard */,
 				92DA3BF81CB7857500AACC3B /* Assets.xcassets */,
@@ -794,6 +797,7 @@
 				927D7BA71CBB35B700955219 /* Word+CoreDataProperties.swift in Sources */,
 				92B29DEF1CB8BDF700A8BD5C /* WordTableViewCell.swift in Sources */,
 				927D7BA91CBB35B700955219 /* WordExplanation+CoreDataProperties.swift in Sources */,
+				927D7BAC1CBB408000955219 /* WordDetailViewController.swift in Sources */,
 				92B29EF51CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld in Sources */,
 				927D7BA81CBB35B700955219 /* Word.swift in Sources */,
 				927D7BAA1CBB35B700955219 /* WordExplanation.swift in Sources */,

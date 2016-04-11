@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordTableViewCell" rowHeight="60" id="xtf-yQ-2XS" customClass="WordTableViewCell" customModule="MusicBook" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WordTableViewCell" rowHeight="60" id="xtf-yQ-2XS" customClass="WordTableViewCell" customModule="MusicBook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xtf-yQ-2XS" id="Y3E-EI-Gy8">
@@ -57,6 +57,7 @@
                                         <connections>
                                             <outlet property="explanationLabel" destination="0wC-7O-F8r" id="rUx-8q-qMt"/>
                                             <outlet property="spellingLabel" destination="qrN-hp-0iO" id="fes-PQ-Csj"/>
+                                            <segue destination="f4T-BB-n9G" kind="show" identifier="ShowWordDetails" id="pIj-ef-u2e"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -80,11 +81,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gat-M9-H9R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="359" y="1105"/>
+            <point key="canvasLocation" x="317" y="1105"/>
+        </scene>
+        <!--Word Detail View Controller-->
+        <scene sceneID="ksb-GC-fka">
+            <objects>
+                <viewController id="f4T-BB-n9G" customClass="WordDetailViewController" customModule="MusicBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IpD-0w-Oq1"/>
+                        <viewControllerLayoutGuide type="bottom" id="kA5-kz-5JS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YkY-us-ana">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Mvd-0E-vXG">
+                                <rect key="frame" x="210" y="196" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kA5-kz-5JS" firstAttribute="top" secondItem="Mvd-0E-vXG" secondAttribute="bottom" id="1SZ-s0-AeH"/>
+                            <constraint firstItem="Mvd-0E-vXG" firstAttribute="leading" secondItem="YkY-us-ana" secondAttribute="leadingMargin" id="7AL-YF-5cf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mvd-0E-vXG" secondAttribute="trailing" id="OXT-AH-WJd"/>
+                            <constraint firstItem="Mvd-0E-vXG" firstAttribute="top" secondItem="IpD-0w-Oq1" secondAttribute="bottom" id="d1y-Lc-73d"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="explanationBox" destination="Mvd-0E-vXG" id="oRA-Vp-nQk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NPL-sC-f73" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1008" y="1105"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Gl-Wn-l8G">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tR6-zS-0Rk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A47-Oo-BqN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iYy-QW-TZp">
@@ -96,7 +134,6 @@
                         <segue destination="Agl-3q-16R" kind="relationship" relationship="rootViewController" id="dXY-wQ-fR9"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tR6-zS-0Rk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-378" y="1105"/>
         </scene>

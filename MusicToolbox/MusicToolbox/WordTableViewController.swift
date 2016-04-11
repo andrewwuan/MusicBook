@@ -33,6 +33,19 @@ class WordTableViewController: UIViewController, UISearchBarDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Segue
+    override func prepareForSegue(segue: UIStoryboardSegue,
+                                  sender: AnyObject?) {
+        
+        if segue.identifier == "ShowWordDetails" {
+            let detailViewController = segue.destinationViewController
+                as! WordDetailViewController
+            
+            let myIndexPath = self.tableView.indexPathForSelectedRow!
+            detailViewController.word = filteredWords[myIndexPath.row]
+        }
+    }
+    
     // MARK: Search bar delegate
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(loadWords), object: nil)
