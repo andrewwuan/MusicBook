@@ -9,18 +9,20 @@
 import UIKit
 import CoreData
 
-class WordTableViewController: UITableViewController, UISearchBarDelegate {
+class WordTableViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     // MARK: Properties
     @IBOutlet weak var wordSearchBar: UISearchBar!
-    
+    @IBOutlet weak var tableView: UITableView!
+
     var filteredWords: [NSManagedObject]!
     var globalSearchText: String!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
         wordSearchBar.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         
         globalSearchText = ""
         loadWords()
@@ -37,17 +39,17 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
         globalSearchText = searchText
         NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(loadWords), userInfo: nil, repeats: false)
     }
-    
+
     // MARK: Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredWords.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "WordTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
@@ -55,11 +57,12 @@ class WordTableViewController: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         // Fetches the appropriate meal for the data source layout.
         let word = filteredWords[indexPath.row]
         
         let wordCell = cell as! WordTableViewCell
+    
         wordCell.spellingLabel.text = word.valueForKey("spelling") as? String
         wordCell.explanationLabel.text = word.valueForKey("explanation") as? String
     }

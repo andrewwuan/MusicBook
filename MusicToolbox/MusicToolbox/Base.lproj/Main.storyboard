@@ -1,89 +1,95 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qfO-xC-Q0Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Agl-3q-16R">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Music Dictionary-->
-        <scene sceneID="fFI-X0-MI1">
+        <!--Word Table View Controller-->
+        <scene sceneID="avY-J8-lUx">
             <objects>
-                <tableViewController id="GB8-6D-ivg" customClass="WordTableViewController" customModule="MusicToolbox" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="0YU-L8-PIt">
+                <viewController id="Agl-3q-16R" customClass="WordTableViewController" customModule="MusicToolbox" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ExT-b0-L2Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="hIL-cD-eP2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z5W-C2-yjN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="esO-2Y-JTB">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="R2g-0G-wps">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="sVa-hY-mFS"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="u5d-aV-C9B"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tAQ-wr-AP6">
+                                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordTableViewCell" rowHeight="60" id="xtf-yQ-2XS" customClass="WordTableViewCell" customModule="MusicToolbox" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="600" height="60"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xtf-yQ-2XS" id="Y3E-EI-Gy8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Explanation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wC-7O-F8r">
+                                                            <rect key="frame" x="16" y="30" width="82" height="21"/>
+                                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="61" placeholderIntrinsicHeight="21" text="Spelling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrN-hp-0iO">
+                                                            <rect key="frame" x="16" y="8" width="62" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="0wC-7O-F8r" firstAttribute="leading" secondItem="Y3E-EI-Gy8" secondAttribute="leadingMargin" constant="10" id="bbH-6e-YRN"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="0wC-7O-F8r" secondAttribute="trailing" constant="15" id="hEq-t6-TKs"/>
+                                                        <constraint firstItem="qrN-hp-0iO" firstAttribute="leading" secondItem="Y3E-EI-Gy8" secondAttribute="leadingMargin" constant="10" id="jrf-Xg-7Js"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="qrN-hp-0iO" secondAttribute="trailing" constant="15" id="mlG-mv-APV"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="explanationLabel" destination="0wC-7O-F8r" id="rUx-8q-qMt"/>
+                                                    <outlet property="spellingLabel" destination="qrN-hp-0iO" id="fes-PQ-Csj"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="tAQ-wr-AP6" firstAttribute="top" secondItem="R2g-0G-wps" secondAttribute="bottom" id="SDO-zn-MaK"/>
+                                    <constraint firstAttribute="bottom" secondItem="tAQ-wr-AP6" secondAttribute="bottom" id="nSj-3a-Ihm"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="TOF-s8-oKy">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WordTableViewCell" rowHeight="60" id="BlB-G3-UMw" customClass="WordTableViewCell" customModule="MusicToolbox" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BlB-G3-UMw" id="mzZ-A3-raX">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Spelling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKK-fE-9T6">
-                                            <rect key="frame" x="8" y="8" width="61" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Explanation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYd-o0-GL1">
-                                            <rect key="frame" x="8" y="30" width="89" height="21"/>
-                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="eKK-fE-9T6" secondAttribute="trailing" constant="10" id="QuP-yC-DCy"/>
-                                        <constraint firstItem="eKK-fE-9T6" firstAttribute="leading" secondItem="mzZ-A3-raX" secondAttribute="leadingMargin" constant="5" id="T27-rv-1qf"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="cYd-o0-GL1" secondAttribute="trailing" constant="10" id="UcW-d8-t9k"/>
-                                        <constraint firstItem="cYd-o0-GL1" firstAttribute="leading" secondItem="mzZ-A3-raX" secondAttribute="leadingMargin" constant="5" id="u75-YW-iY1"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="explanationLabel" destination="cYd-o0-GL1" id="duR-Av-xbU"/>
-                                    <outlet property="spellingLabel" destination="eKK-fE-9T6" id="Kiy-28-S8g"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="GB8-6D-ivg" id="lgT-mN-226"/>
-                            <outlet property="delegate" destination="GB8-6D-ivg" id="nN9-oT-lfp"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Music Dictionary" id="SfS-Pp-zcX"/>
+                        <constraints>
+                            <constraint firstItem="esO-2Y-JTB" firstAttribute="top" secondItem="z5W-C2-yjN" secondAttribute="topMargin" id="AtW-AB-gnZ"/>
+                            <constraint firstItem="esO-2Y-JTB" firstAttribute="leading" secondItem="z5W-C2-yjN" secondAttribute="leadingMargin" constant="-20" id="Puw-hi-ih3"/>
+                            <constraint firstItem="hIL-cD-eP2" firstAttribute="top" secondItem="esO-2Y-JTB" secondAttribute="bottom" id="lJb-4R-dlW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="esO-2Y-JTB" secondAttribute="trailing" constant="-20" id="ybN-Nr-Bmj"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <outlet property="wordSearchBar" destination="TOF-s8-oKy" id="iYJ-8i-Ctd"/>
+                        <outlet property="tableView" destination="tAQ-wr-AP6" id="q3m-c0-akW"/>
+                        <outlet property="wordSearchBar" destination="R2g-0G-wps" id="xRE-gs-49d"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aET-cF-JeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gat-M9-H9R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="442" y="384"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="nBW-8P-RMh">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qfO-xC-Q0Y" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bQC-Ua-hI9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="GB8-6D-ivg" kind="relationship" relationship="rootViewController" id="aFM-2i-MZh"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nk5-pz-TWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-370" y="384"/>
+            <point key="canvasLocation" x="-378" y="1105"/>
         </scene>
     </scenes>
 </document>
