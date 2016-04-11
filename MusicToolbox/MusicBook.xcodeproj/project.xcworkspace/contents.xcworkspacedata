@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:MusicToolbox.xcodeproj">
+      location = "self:/Users/awu/Documents/MusicToolbox/MusicToolbox/MusicBook.xcodeproj">
    </FileRef>
 </Workspace>

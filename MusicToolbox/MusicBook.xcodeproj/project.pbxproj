@@ -133,7 +133,10 @@
 		9230C0411CB9754A0000E56B /* 125.json in Resources */ = {isa = PBXBuildFile; fileRef = 9230BFC41CB975490000E56B /* 125.json */; };
 		9230C0421CB9754A0000E56B /* 126.json in Resources */ = {isa = PBXBuildFile; fileRef = 9230BFC51CB9754A0000E56B /* 126.json */; };
 		923CCBAA1CB8FBD4005ADB29 /* 1.json in Resources */ = {isa = PBXBuildFile; fileRef = 923CCB2C1CB8FBD3005ADB29 /* 1.json */; };
-		92B29DEB1CB8B69600A8BD5C /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B29DEA1CB8B69600A8BD5C /* Word.swift */; };
+		927D7BA71CBB35B700955219 /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927D7BA31CBB35B700955219 /* Word+CoreDataProperties.swift */; };
+		927D7BA81CBB35B700955219 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927D7BA41CBB35B700955219 /* Word.swift */; };
+		927D7BA91CBB35B700955219 /* WordExplanation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927D7BA51CBB35B700955219 /* WordExplanation+CoreDataProperties.swift */; };
+		927D7BAA1CBB35B700955219 /* WordExplanation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927D7BA61CBB35B700955219 /* WordExplanation.swift */; };
 		92B29DED1CB8BCA500A8BD5C /* WordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B29DEC1CB8BCA500A8BD5C /* WordTableViewController.swift */; };
 		92B29DEF1CB8BDF700A8BD5C /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B29DEE1CB8BDF700A8BD5C /* WordTableViewCell.swift */; };
 		92B29EF51CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92B29EF31CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld */; };
@@ -289,20 +292,23 @@
 		9230BFC41CB975490000E56B /* 125.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 125.json; path = ../../scrapper/dict/125.json; sourceTree = "<group>"; };
 		9230BFC51CB9754A0000E56B /* 126.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 126.json; path = ../../scrapper/dict/126.json; sourceTree = "<group>"; };
 		923CCB2C1CB8FBD3005ADB29 /* 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 1.json; path = ../../scrapper/dict/1.json; sourceTree = "<group>"; };
-		92B29DEA1CB8B69600A8BD5C /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		927D7BA31CBB35B700955219 /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		927D7BA41CBB35B700955219 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		927D7BA51CBB35B700955219 /* WordExplanation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordExplanation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		927D7BA61CBB35B700955219 /* WordExplanation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordExplanation.swift; sourceTree = "<group>"; };
 		92B29DEC1CB8BCA500A8BD5C /* WordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTableViewController.swift; sourceTree = "<group>"; };
 		92B29DEE1CB8BDF700A8BD5C /* WordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
 		92B29EF41CB8D5B400A8BD5C /* MusicToolbox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MusicToolbox.xcdatamodel; sourceTree = "<group>"; };
-		92DA3BEE1CB7857500AACC3B /* MusicToolbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicToolbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92DA3BEE1CB7857500AACC3B /* MusicBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DA3BF11CB7857500AACC3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92DA3BF61CB7857500AACC3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92DA3BF81CB7857500AACC3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92DA3BFB1CB7857500AACC3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92DA3BFD1CB7857500AACC3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92DA3C021CB7857500AACC3B /* MusicToolboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicToolboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92DA3C021CB7857500AACC3B /* MusicBook.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicBook.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DA3C061CB7857500AACC3B /* MusicToolboxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicToolboxTests.swift; sourceTree = "<group>"; };
 		92DA3C081CB7857500AACC3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92DA3C0D1CB7857500AACC3B /* MusicToolboxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicToolboxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92DA3C0D1CB7857500AACC3B /* MusicBook.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicBook.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DA3C111CB7857500AACC3B /* MusicToolboxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicToolboxUITests.swift; sourceTree = "<group>"; };
 		92DA3C131CB7857500AACC3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -478,9 +484,9 @@
 		92DA3BEF1CB7857500AACC3B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				92DA3BEE1CB7857500AACC3B /* MusicToolbox.app */,
-				92DA3C021CB7857500AACC3B /* MusicToolboxTests.xctest */,
-				92DA3C0D1CB7857500AACC3B /* MusicToolboxUITests.xctest */,
+				92DA3BEE1CB7857500AACC3B /* MusicBook.app */,
+				92DA3C021CB7857500AACC3B /* MusicBook.xctest */,
+				92DA3C0D1CB7857500AACC3B /* MusicBook.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -493,11 +499,14 @@
 				92B29DEC1CB8BCA500A8BD5C /* WordTableViewController.swift */,
 				92B29DEE1CB8BDF700A8BD5C /* WordTableViewCell.swift */,
 				92DA3BF51CB7857500AACC3B /* Main.storyboard */,
-				92B29DEA1CB8B69600A8BD5C /* Word.swift */,
 				92DA3BF81CB7857500AACC3B /* Assets.xcassets */,
 				92DA3BFA1CB7857500AACC3B /* LaunchScreen.storyboard */,
 				92DA3BFD1CB7857500AACC3B /* Info.plist */,
 				92B29EF31CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld */,
+				927D7BA31CBB35B700955219 /* Word+CoreDataProperties.swift */,
+				927D7BA41CBB35B700955219 /* Word.swift */,
+				927D7BA51CBB35B700955219 /* WordExplanation+CoreDataProperties.swift */,
+				927D7BA61CBB35B700955219 /* WordExplanation.swift */,
 			);
 			path = MusicToolbox;
 			sourceTree = "<group>";
@@ -523,9 +532,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		92DA3BED1CB7857500AACC3B /* MusicToolbox */ = {
+		92DA3BED1CB7857500AACC3B /* MusicBook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92DA3C161CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicToolbox" */;
+			buildConfigurationList = 92DA3C161CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicBook" */;
 			buildPhases = (
 				92DA3BEA1CB7857500AACC3B /* Sources */,
 				92DA3BEB1CB7857500AACC3B /* Frameworks */,
@@ -535,14 +544,14 @@
 			);
 			dependencies = (
 			);
-			name = MusicToolbox;
+			name = MusicBook;
 			productName = MusicToolbox;
-			productReference = 92DA3BEE1CB7857500AACC3B /* MusicToolbox.app */;
+			productReference = 92DA3BEE1CB7857500AACC3B /* MusicBook.app */;
 			productType = "com.apple.product-type.application";
 		};
-		92DA3C011CB7857500AACC3B /* MusicToolboxTests */ = {
+		92DA3C011CB7857500AACC3B /* MusicBookTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92DA3C191CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicToolboxTests" */;
+			buildConfigurationList = 92DA3C191CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicBookTests" */;
 			buildPhases = (
 				92DA3BFE1CB7857500AACC3B /* Sources */,
 				92DA3BFF1CB7857500AACC3B /* Frameworks */,
@@ -553,14 +562,14 @@
 			dependencies = (
 				92DA3C041CB7857500AACC3B /* PBXTargetDependency */,
 			);
-			name = MusicToolboxTests;
+			name = MusicBookTests;
 			productName = MusicToolboxTests;
-			productReference = 92DA3C021CB7857500AACC3B /* MusicToolboxTests.xctest */;
+			productReference = 92DA3C021CB7857500AACC3B /* MusicBook.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		92DA3C0C1CB7857500AACC3B /* MusicToolboxUITests */ = {
+		92DA3C0C1CB7857500AACC3B /* MusicBookUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92DA3C1C1CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicToolboxUITests" */;
+			buildConfigurationList = 92DA3C1C1CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicBookUITests" */;
 			buildPhases = (
 				92DA3C091CB7857500AACC3B /* Sources */,
 				92DA3C0A1CB7857500AACC3B /* Frameworks */,
@@ -571,9 +580,9 @@
 			dependencies = (
 				92DA3C0F1CB7857500AACC3B /* PBXTargetDependency */,
 			);
-			name = MusicToolboxUITests;
+			name = MusicBookUITests;
 			productName = MusicToolboxUITests;
-			productReference = 92DA3C0D1CB7857500AACC3B /* MusicToolboxUITests.xctest */;
+			productReference = 92DA3C0D1CB7857500AACC3B /* MusicBook.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -602,7 +611,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 92DA3BE91CB7857500AACC3B /* Build configuration list for PBXProject "MusicToolbox" */;
+			buildConfigurationList = 92DA3BE91CB7857500AACC3B /* Build configuration list for PBXProject "MusicBook" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -615,9 +624,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				92DA3BED1CB7857500AACC3B /* MusicToolbox */,
-				92DA3C011CB7857500AACC3B /* MusicToolboxTests */,
-				92DA3C0C1CB7857500AACC3B /* MusicToolboxUITests */,
+				92DA3BED1CB7857500AACC3B /* MusicBook */,
+				92DA3C011CB7857500AACC3B /* MusicBookTests */,
+				92DA3C0C1CB7857500AACC3B /* MusicBookUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -781,10 +790,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				92DA3BF21CB7857500AACC3B /* AppDelegate.swift in Sources */,
-				92B29DEB1CB8B69600A8BD5C /* Word.swift in Sources */,
 				92B29DED1CB8BCA500A8BD5C /* WordTableViewController.swift in Sources */,
+				927D7BA71CBB35B700955219 /* Word+CoreDataProperties.swift in Sources */,
 				92B29DEF1CB8BDF700A8BD5C /* WordTableViewCell.swift in Sources */,
+				927D7BA91CBB35B700955219 /* WordExplanation+CoreDataProperties.swift in Sources */,
 				92B29EF51CB8D5B400A8BD5C /* MusicToolbox.xcdatamodeld in Sources */,
+				927D7BA81CBB35B700955219 /* Word.swift in Sources */,
+				927D7BAA1CBB35B700955219 /* WordExplanation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,12 +821,12 @@
 /* Begin PBXTargetDependency section */
 		92DA3C041CB7857500AACC3B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 92DA3BED1CB7857500AACC3B /* MusicToolbox */;
+			target = 92DA3BED1CB7857500AACC3B /* MusicBook */;
 			targetProxy = 92DA3C031CB7857500AACC3B /* PBXContainerItemProxy */;
 		};
 		92DA3C0F1CB7857500AACC3B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 92DA3BED1CB7857500AACC3B /* MusicToolbox */;
+			target = 92DA3BED1CB7857500AACC3B /* MusicBook */;
 			targetProxy = 92DA3C0E1CB7857500AACC3B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -931,7 +943,7 @@
 				INFOPLIST_FILE = MusicToolbox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewwuan.MusicToolbox;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MusicBook;
 			};
 			name = Debug;
 		};
@@ -942,7 +954,7 @@
 				INFOPLIST_FILE = MusicToolbox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewwuan.MusicToolbox;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MusicBook;
 			};
 			name = Release;
 		};
@@ -953,8 +965,8 @@
 				INFOPLIST_FILE = MusicToolboxTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewwuan.MusicToolboxTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicToolbox.app/MusicToolbox";
+				PRODUCT_NAME = MusicBook;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicBook.app/MusicBook";
 			};
 			name = Debug;
 		};
@@ -965,8 +977,8 @@
 				INFOPLIST_FILE = MusicToolboxTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewwuan.MusicToolboxTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicToolbox.app/MusicToolbox";
+				PRODUCT_NAME = MusicBook;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicBook.app/MusicBook";
 			};
 			name = Release;
 		};
@@ -976,7 +988,7 @@
 				INFOPLIST_FILE = MusicToolboxUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewwuan.MusicToolboxUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MusicBook;
 				TEST_TARGET_NAME = MusicToolbox;
 			};
 			name = Debug;
@@ -987,7 +999,7 @@
 				INFOPLIST_FILE = MusicToolboxUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewwuan.MusicToolboxUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MusicBook;
 				TEST_TARGET_NAME = MusicToolbox;
 			};
 			name = Release;
@@ -995,7 +1007,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		92DA3BE91CB7857500AACC3B /* Build configuration list for PBXProject "MusicToolbox" */ = {
+		92DA3BE91CB7857500AACC3B /* Build configuration list for PBXProject "MusicBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92DA3C141CB7857500AACC3B /* Debug */,
@@ -1004,7 +1016,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92DA3C161CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicToolbox" */ = {
+		92DA3C161CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92DA3C171CB7857500AACC3B /* Debug */,
@@ -1013,7 +1025,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92DA3C191CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicToolboxTests" */ = {
+		92DA3C191CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicBookTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92DA3C1A1CB7857500AACC3B /* Debug */,
@@ -1022,7 +1034,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92DA3C1C1CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicToolboxUITests" */ = {
+		92DA3C1C1CB7857500AACC3B /* Build configuration list for PBXNativeTarget "MusicBookUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92DA3C1D1CB7857500AACC3B /* Debug */,

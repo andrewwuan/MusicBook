@@ -14,7 +14,7 @@ class WordTableViewController: UIViewController, UISearchBarDelegate, UITableVie
     @IBOutlet weak var wordSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
 
-    var filteredWords: [NSManagedObject]!
+    var filteredWords: [Word]!
     var globalSearchText: String!
 
     override func viewDidLoad() {
@@ -44,11 +44,11 @@ class WordTableViewController: UIViewController, UISearchBarDelegate, UITableVie
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredWords.count
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "WordTableViewCell"
@@ -56,15 +56,25 @@ class WordTableViewController: UIViewController, UISearchBarDelegate, UITableVie
 
         return cell
     }
-    
+
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         // Fetches the appropriate meal for the data source layout.
         let word = filteredWords[indexPath.row]
-        
+
         let wordCell = cell as! WordTableViewCell
+
+        wordCell.spellingLabel.text = word.spelling
+
+        let explanation = word.explanations!.map({ (explanationObj) -> String in
+            let explanation = explanationObj as! WordExplanation
+            return explanation.explanation!
+        })
+
+        wordCell.explanationLabel.text = explanation.joinWithSeparator("\n")
+    }
     
-        wordCell.spellingLabel.text = word.valueForKey("spelling") as? String
-        wordCell.explanationLabel.text = word.valueForKey("explanation") as? String
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        wordSearchBar.resignFirstResponder()
     }
     
     func loadWords() {
@@ -78,7 +88,7 @@ class WordTableViewController: UIViewController, UISearchBarDelegate, UITableVie
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "spelling", ascending: true)]
 
         do {
-            filteredWords = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+            filteredWords = try managedContext.executeFetchRequest(fetchRequest) as! [Word]
             tableView.reloadData()
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")

@@ -1,5 +1,5 @@
 //
-//  Word.swift
+//  WordExplanation.swift
 //  MusicBook
 //
 //  Created by An Wu on 4/10/16.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Word: NSManagedObject {
+class WordExplanation: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

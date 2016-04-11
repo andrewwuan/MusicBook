@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Music Dictionary-->
+        <!--Search-->
         <scene sceneID="avY-J8-lUx">
             <objects>
-                <viewController id="Agl-3q-16R" customClass="WordTableViewController" customModule="MusicToolbox" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Agl-3q-16R" customClass="WordTableViewController" customModule="MusicBook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ExT-b0-L2Y"/>
                         <viewControllerLayoutGuide type="bottom" id="hIL-cD-eP2"/>
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordTableViewCell" rowHeight="60" id="xtf-yQ-2XS" customClass="WordTableViewCell" customModule="MusicToolbox" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordTableViewCell" rowHeight="60" id="xtf-yQ-2XS" customClass="WordTableViewCell" customModule="MusicBook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xtf-yQ-2XS" id="Y3E-EI-Gy8">
@@ -53,6 +53,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="qrN-hp-0iO" secondAttribute="trailing" constant="15" id="zXn-YO-TY0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="explanationLabel" destination="0wC-7O-F8r" id="rUx-8q-qMt"/>
                                             <outlet property="spellingLabel" destination="qrN-hp-0iO" id="fes-PQ-Csj"/>
@@ -71,7 +72,7 @@
                             <constraint firstItem="hIL-cD-eP2" firstAttribute="top" secondItem="tAQ-wr-AP6" secondAttribute="bottom" id="f7k-sH-6lN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Music Dictionary" id="tuV-Xm-8fs"/>
+                    <navigationItem key="navigationItem" title="Search" id="tuV-Xm-8fs"/>
                     <connections>
                         <outlet property="tableView" destination="tAQ-wr-AP6" id="q3m-c0-akW"/>
                         <outlet property="wordSearchBar" destination="R2g-0G-wps" id="xRE-gs-49d"/>
@@ -79,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gat-M9-H9R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="431" y="1048"/>
+            <point key="canvasLocation" x="359" y="1105"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Gl-Wn-l8G">

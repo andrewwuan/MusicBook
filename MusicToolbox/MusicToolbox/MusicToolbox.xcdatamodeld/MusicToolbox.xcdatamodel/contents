@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
-    <entity name="Word" syncable="YES">
-        <attribute name="explanation" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Word" representedClassName=".Word" syncable="YES">
         <attribute name="spelling" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="explanations" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="WordExplanation" inverseName="word" inverseEntity="WordExplanation" syncable="YES"/>
+        <compoundIndexes>
+            <compoundIndex>
+                <index value="spelling"/>
+            </compoundIndex>
+        </compoundIndexes>
+    </entity>
+    <entity name="WordExplanation" representedClassName=".WordExplanation" syncable="YES">
+        <attribute name="explanation" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="word" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Word" inverseName="explanations" inverseEntity="Word" syncable="YES"/>
     </entity>
     <elements>
         <element name="Word" positionX="-54" positionY="-9" width="128" height="75"/>
+        <element name="WordExplanation" positionX="-54" positionY="9" width="128" height="75"/>
     </elements>
 </model>

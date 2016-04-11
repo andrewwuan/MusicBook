@@ -129,23 +129,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             // Parse data files and insert into data model
             let managedContext = self.managedObjectContext
-            let entity = NSEntityDescription.entityForName("Word", inManagedObjectContext: managedContext)
             for dataFile in dataFiles {
                 do {
                     print("Parsing data file \(dataFile)")
-                    let words = try parseDataFile(dataFile)
-                    print("Data file \(dataFile) has \(words.count) items")
-                    
-                    words.forEach({ (word: Word) in
-                        let wordObj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-                        wordObj.setValue(word.spelling, forKey: "spelling")
-                        wordObj.setValue(word.explanation, forKey: "explanation")
-                    })
+                    try parseDataFile(dataFile)
                 } catch let error as NSError {
                     print("Could not parse \(dataFile), \(error.userInfo)")
                 }
             }
-            
+
             do {
                 try managedContext.save()
             } catch let error as NSError  {
@@ -158,38 +150,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func removeData() {
-        let managedContext = self.managedObjectContext
-
+        
         let fetchRequest = NSFetchRequest(entityName: "Word")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
+        
         do {
-            try managedContext.executeRequest(deleteRequest)
+            try managedObjectContext.executeRequest(deleteRequest)
         } catch let error as NSError {
             print("Could not delete all \(error), \(error.userInfo)")
         }
     }
 
-    func parseDataFile(filename: String) throws -> [Word] {
-        print("In parseDataFile(\(filename))")
+    func parseDataFile(filename: String) throws {
+        let wordEntity = NSEntityDescription.entityForName("Word", inManagedObjectContext: managedObjectContext)!
+        let wordExplanationEntity = NSEntityDescription.entityForName("WordExplanation", inManagedObjectContext: managedObjectContext)!
+
         if let path = NSBundle.mainBundle().resourcePath?.stringByAppendingString("/\(filename)") {
             if let jsonData = NSData(contentsOfFile: path) {
                 if let jsonResult: NSDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
-                    return jsonResult.flatMap { (spellingObj, explanationObjs) -> [Word] in
+                    jsonResult.forEach { (spellingObj, explanationObjs) -> Void in
                         let spelling = spellingObj as! String
                         let finalSpelling = spelling.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                        let word = Word(entity: wordEntity, insertIntoManagedObjectContext: managedObjectContext)
+                        word.spelling = finalSpelling
 
-                        let explanations = explanationObjs as! NSArray
-                        return explanations.map { explanation -> Word in
-                            return Word(spelling: finalSpelling, explanation: explanation as! String)
-                        }
+                        let explanations = (explanationObjs as! NSArray).map({ (explanationObj) -> NSManagedObject in
+                            let explanation = WordExplanation(entity: wordExplanationEntity, insertIntoManagedObjectContext: managedObjectContext)
+                            explanation.explanation = explanationObj as? String
+                            explanation.word = word
+                            return explanation
+                        })
+
+                        word.explanations = NSOrderedSet(array: explanations)
                     }
                 }
             }
         }
-        
-        print("Failed to parse \(filename)!!!")
-        return []
     }
 
 
