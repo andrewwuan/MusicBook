@@ -176,7 +176,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                         let explanations = (explanationObjs as! NSArray).map({ (explanationObj) -> NSManagedObject in
                             let explanation = WordExplanation(entity: wordExplanationEntity, insertIntoManagedObjectContext: managedObjectContext)
-                            explanation.explanation = explanationObj as? String
+                            let explanationStr = explanationObj as? String
+                            let attributedString = try? NSAttributedString(data: explanationStr!.dataUsingEncoding(NSUTF8StringEncoding)!, options:[NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding], documentAttributes: nil)
+                            
+                            explanation.encodedStr = explanationStr
+                            explanation.decodedObj = attributedString
+                            explanation.decodedStr = attributedString!.string
+                            
                             explanation.word = word
                             return explanation
                         })

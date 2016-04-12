@@ -80,7 +80,7 @@ class WordTableViewController: UIViewController, UISearchBarDelegate, UITableVie
 
         let explanation = word.explanations!.map({ (explanationObj) -> String in
             let explanation = explanationObj as! WordExplanation
-            return explanation.explanation!
+            return explanation.decodedStr!
         })
 
         wordCell.explanationLabel.text = explanation.joinWithSeparator("\n")

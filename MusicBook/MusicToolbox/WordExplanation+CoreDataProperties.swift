@@ -2,7 +2,7 @@
 //  WordExplanation+CoreDataProperties.swift
 //  MusicBook
 //
-//  Created by An Wu on 4/10/16.
+//  Created by An Wu on 4/11/16.
 //  Copyright © 2016 An Wu. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,7 +14,9 @@ import CoreData
 
 extension WordExplanation {
 
-    @NSManaged var explanation: String?
+    @NSManaged var encodedStr: String?
+    @NSManaged var decodedObj: NSObject?
+    @NSManaged var decodedStr: String?
     @NSManaged var word: Word?
 
 }

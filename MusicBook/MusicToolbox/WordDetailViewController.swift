@@ -18,21 +18,18 @@ class WordDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = word.spelling!
-        
-        let explanations = word.explanations!.enumerate().map { (index, explanation) -> String in
-            "\(index + 1). \((explanation as! WordExplanation).explanation!)"
-        }.joinWithSeparator("<br /><br />") + "<br /><br /><br />" + "<style>* {font-family: Arial, Helvetica, sans-serif; font-size: 15px;}</style>"
 
         explanationBox.textContainerInset = UIEdgeInsetsMake(20, 30, 0, 30)
         
-        do {
-            let attributedString = try NSAttributedString(data: explanations.dataUsingEncoding(NSUTF8StringEncoding)!, options:[NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding], documentAttributes: nil)
+        let mutableAttributedString = NSMutableAttributedString()
+        word.explanations!.forEach({ (explanationObj) in
+            let explanation = explanationObj as! WordExplanation
+            let attributedString = explanation.decodedObj as! NSAttributedString
+            mutableAttributedString.appendAttributedString(attributedString)
+        })
             
-            explanationBox.attributedText = attributedString
-            explanationBox.showsVerticalScrollIndicator = false
-        } catch {
-            
-        }
+        explanationBox.attributedText = mutableAttributedString
+        explanationBox.showsVerticalScrollIndicator = false
     }
     
     override func didReceiveMemoryWarning() {
