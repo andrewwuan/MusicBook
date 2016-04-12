@@ -10,7 +10,7 @@
         </compoundIndexes>
     </entity>
     <entity name="WordExplanation" representedClassName=".WordExplanation" syncable="YES">
-        <attribute name="explanation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="encodedStr" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="word" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Word" inverseName="explanations" inverseEntity="Word" syncable="YES"/>
     </entity>
     <elements>

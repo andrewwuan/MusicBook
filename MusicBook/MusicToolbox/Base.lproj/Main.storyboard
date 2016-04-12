@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="A47-Oo-BqN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UYB-PR-pk0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -81,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gat-M9-H9R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="317" y="1105"/>
+            <point key="canvasLocation" x="319" y="1105"/>
         </scene>
         <!--Word Detail View Controller-->
         <scene sceneID="ksb-GC-fka">
@@ -118,6 +118,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPL-sC-f73" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1008" y="1105"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="XYq-3Z-1g3">
+            <objects>
+                <viewController id="UYB-PR-pk0" customClass="LoadingViewController" customModule="MusicBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UVT-wy-AKJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="vP7-V7-2GC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mob-Jh-akg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9B-68-EdK">
+                                <rect key="frame" x="270" y="257" width="61" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qBV-jG-uHH">
+                                <rect key="frame" x="225" y="350" width="150" height="2"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="T9B-68-EdK" firstAttribute="centerX" secondItem="Mob-Jh-akg" secondAttribute="centerX" id="JEd-Qq-dNx"/>
+                            <constraint firstItem="qBV-jG-uHH" firstAttribute="centerX" secondItem="Mob-Jh-akg" secondAttribute="centerX" id="qhG-4o-N6f"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loadingProgress" destination="qBV-jG-uHH" id="7fZ-tY-YKN"/>
+                        <segue destination="A47-Oo-BqN" kind="show" identifier="ShowWordTable" id="VhE-Sx-e9E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XSW-1K-BNv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1060" y="1105"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Gl-Wn-l8G">
