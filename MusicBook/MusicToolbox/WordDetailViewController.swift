@@ -17,22 +17,22 @@ class WordDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = word.spelling!
+        
         let explanations = word.explanations!.enumerate().map { (index, explanation) -> String in
             "\(index + 1). \((explanation as! WordExplanation).explanation!)"
-        }
+        }.joinWithSeparator("<br /><br />") + "<br /><br /><br />" + "<style>* {font-family: Arial, Helvetica, sans-serif; font-size: 15px;}</style>"
 
-        explanationBox.textContainerInset = UIEdgeInsetsMake(15, 30, 0, 30)
+        explanationBox.textContainerInset = UIEdgeInsetsMake(20, 30, 0, 30)
         
-        let font = UIFont(name: "Palatino-Roman", size: 14.0)
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 10
-        
-        let attributedString = NSMutableAttributedString(string: explanations.joinWithSeparator("\n\n") + "\n\n\n")
-        attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
-        attributedString.addAttribute(NSFontAttributeName, value: font!, range: NSRange(location: 0, length: attributedString.length))
-        explanationBox.attributedText = attributedString
-        explanationBox.showsVerticalScrollIndicator = false
+        do {
+            let attributedString = try NSAttributedString(data: explanations.dataUsingEncoding(NSUTF8StringEncoding)!, options:[NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding], documentAttributes: nil)
+            
+            explanationBox.attributedText = attributedString
+            explanationBox.showsVerticalScrollIndicator = false
+        } catch {
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {
