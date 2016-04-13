@@ -32,18 +32,30 @@ class LoadingViewController: UIViewController {
             dispatch_async(dispatch_get_global_queue(priority, 0)) {
                 self.appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 self.managedContext = self.appDelegate.managedObjectContext
-                
+
                 self.preloadData()
-                
+
                 defaults.setBool(true, forKey: "isPreloaded")
 
-                dispatch_async(dispatch_get_main_queue()) {
+                dispatch_sync(dispatch_get_global_queue(priority, 0), {
+                    NSThread.sleepForTimeInterval(0.5)
+                })
+
+                dispatch_async(dispatch_get_main_queue(), {
                     self.performSegueWithIdentifier("ShowWordTable", sender: self.loadingProgress)
-                }
+                })
             }
         } else {
+
             loadingProgress.setProgress(1.0, animated: true)
-            performSegueWithIdentifier("ShowWordTable", sender: loadingProgress)
+
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0), {
+                // Visual candy
+                NSThread.sleepForTimeInterval(1)
+                self.performSegueWithIdentifier("ShowWordTable", sender: self.loadingProgress)
+            })
+            
         }
 
     }
@@ -114,7 +126,7 @@ class LoadingViewController: UIViewController {
                         
                         let explanations = (explanationObjs as! NSArray).map({ (explanationObj) -> NSManagedObject in
                             let explanation = WordExplanation(entity: wordExplanationEntity, insertIntoManagedObjectContext: managedContext)
-                            let explanationStr = explanationObj as? String
+                            let explanationStr = (explanationObj as? String)?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                             
                             explanation.encodedStr = explanationStr
                             explanation.word = word

@@ -13,6 +13,11 @@ class WordTableViewController: UIViewController, UISearchBarDelegate, UITableVie
     // MARK: Properties
     @IBOutlet weak var wordSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBAction func infoButton(sender: UIButton) {
+        let info = UIAlertController(title: "Information", message: "All dictionary resources are from Dolmetsch Music Dictionary: \nhttp://www.dolmetsch.com", preferredStyle: UIAlertControllerStyle.Alert)
+        info.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(info, animated: true, completion: nil)
+    }
 
     var filteredWords: [Word]!
     var globalSearchText: String!
@@ -78,12 +83,10 @@ class WordTableViewController: UIViewController, UISearchBarDelegate, UITableVie
 
         wordCell.spellingLabel.text = word.spelling
 
-        let explanation = word.explanations!.map({ (explanationObj) -> String in
-            let explanation = explanationObj as! WordExplanation
-            return explanation.encodedStr!
-        })
+        let encodedExplanation = (word.explanations!.firstObject as! WordExplanation).encodedStr!
+        let explanation = encodedExplanation.hasPrefix("<table") ? "Click to see table" : encodedExplanation
 
-        wordCell.explanationLabel.text = explanation.joinWithSeparator("\n")
+        wordCell.explanationLabel.text = explanation
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {

@@ -36,13 +36,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Explanation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wC-7O-F8r">
                                                     <rect key="frame" x="16" y="30" width="82" height="21"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="61" placeholderIntrinsicHeight="21" text="Spelling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrN-hp-0iO">
                                                     <rect key="frame" x="16" y="8" width="62" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -73,7 +73,17 @@
                             <constraint firstItem="hIL-cD-eP2" firstAttribute="top" secondItem="tAQ-wr-AP6" secondAttribute="bottom" id="f7k-sH-6lN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Search" id="tuV-Xm-8fs"/>
+                    <navigationItem key="navigationItem" title="Search" id="tuV-Xm-8fs">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="rMV-MF-4Hy">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="36B-ep-iz3">
+                                <rect key="frame" x="558" y="11" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="infoButton:" destination="Agl-3q-16R" eventType="touchDown" id="1Bn-Ej-1wM"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="tAQ-wr-AP6" id="q3m-c0-akW"/>
                         <outlet property="wordSearchBar" destination="R2g-0G-wps" id="xRE-gs-49d"/>
@@ -95,10 +105,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvd-0E-vXG">
-                                <rect key="frame" x="212" y="117" width="240" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvd-0E-vXG">
+                                <rect key="frame" x="20" y="64" width="560" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -117,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPL-sC-f73" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1008" y="1105"/>
+            <point key="canvasLocation" x="1010" y="1133"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="XYq-3Z-1g3">
@@ -131,19 +141,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9B-68-EdK">
-                                <rect key="frame" x="270" y="257" width="61" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="BookIcon" translatesAutoresizingMaskIntoConstraints="NO" id="jFJ-gq-BwB">
+                                <rect key="frame" x="240" y="163" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Pa8-ut-w8D"/>
+                                    <constraint firstAttribute="height" constant="120" id="kHU-hD-a6t"/>
+                                </constraints>
+                            </imageView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qBV-jG-uHH">
-                                <rect key="frame" x="225" y="350" width="150" height="2"/>
+                                <rect key="frame" x="225" y="408" width="150" height="2"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="T9B-68-EdK" firstAttribute="centerX" secondItem="Mob-Jh-akg" secondAttribute="centerX" id="JEd-Qq-dNx"/>
+                            <constraint firstItem="qBV-jG-uHH" firstAttribute="centerY" secondItem="Mob-Jh-akg" secondAttribute="centerY" constant="120" id="MIM-wE-em8"/>
+                            <constraint firstItem="jFJ-gq-BwB" firstAttribute="centerY" secondItem="Mob-Jh-akg" secondAttribute="centerY" constant="-80" id="O3U-13-zem"/>
+                            <constraint firstItem="jFJ-gq-BwB" firstAttribute="centerX" secondItem="Mob-Jh-akg" secondAttribute="centerX" id="frg-Cb-5ns"/>
                             <constraint firstItem="qBV-jG-uHH" firstAttribute="centerX" secondItem="Mob-Jh-akg" secondAttribute="centerX" id="qhG-4o-N6f"/>
                         </constraints>
                     </view>
@@ -175,4 +188,7 @@
             <point key="canvasLocation" x="-378" y="1105"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BookIcon" width="180" height="180"/>
+    </resources>
 </document>

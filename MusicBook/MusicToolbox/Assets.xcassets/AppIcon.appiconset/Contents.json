@@ -23,13 +23,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Book-icon-1.png",
+      "filename" : "book-icon-opaque-120.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Book-icon.png",
+      "filename" : "book-icon-opaque.png",
       "scale" : "3x"
     },
     {

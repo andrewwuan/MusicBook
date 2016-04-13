@@ -22,12 +22,12 @@ class WordDetailViewController: UIViewController {
         explanationBox.textContainerInset = UIEdgeInsetsMake(20, 30, 0, 30)
         
         let mutableAttributedString = NSMutableAttributedString()
-        word.explanations!.forEach({ (explanationObj) in
+        word.explanations!.enumerate().forEach({ (index, explanationObj) in
             let explanation = explanationObj as! WordExplanation
-            let attributedString = try? NSAttributedString(data: explanation.encodedStr!.dataUsingEncoding(NSUTF8StringEncoding)!, options:[NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding], documentAttributes: nil)
+            let attributedString = try? NSAttributedString(data: ("\(index + 1). " + explanation.encodedStr! + "<br /><br />" + "<style>* {font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 16px; line-height: 150%;}</style>").dataUsingEncoding(NSUTF8StringEncoding)!, options:[NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding], documentAttributes: nil)
             mutableAttributedString.appendAttributedString(attributedString!)
         })
-        
+
         explanationBox.attributedText = mutableAttributedString
         explanationBox.showsVerticalScrollIndicator = false
     }
